@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,19 +14,23 @@
             height: 100vh;
             background-color: #f0f0f0;
         }
+
         .box2 {
             text-align: center;
             padding: 20px;
+            height: 200px;
             font-weight: 900;
             background-color: white;
             box-shadow: 1px 1px 7px 6px #000;
             border: 3px solid black;
             border-radius: 8px;
-            position: relative; /* Ensures the buttons move within this container */
+            position: relative;
         }
+
         .box2 p {
             color: blue;
         }
+
         .box2 a {
             display: inline-block;
             margin: 10px;
@@ -35,47 +40,60 @@
             border-radius: 5px;
             text-decoration: none;
             cursor: pointer;
-            position: absolute; /* Allows movement of the "No" button */
+            position: absolute;
         }
+
         .yes {
-            background-color: #4CAF50; /* Green */
+            background-color: #4CAF50;
             color: white;
-            left: 50%; /* Center the "Yes" button */
+            left: 25%;
             transform: translateX(-50%);
         }
+
         .no {
-            background-color: #f44336; /* Red */
+            background-color: #f44336;
             color: white;
         }
     </style>
 </head>
+
 <body>
     <div class="box1">
         <div class="box2">
             <h2>Baby Man Jao Na! Aur Kitna Sataoge 😭</h2>
             <p>Bahut Galat Baat Hei Yaar 😢</p>
 
-            <a href="yes.html" class="yes">Yes</a>
-            <a href="#" class="no" id="noButton">No</a>
+            <a href="yes.html" class="btn yes" id="yesButton">Yes</a>
+            <a href="#" class="btn no" id="noButton">No</a>
         </div>
     </div>
 
     <script>
-        const noButton = document.getElementById('noButton');
+        // Adding button sound effects
+        const audio = new Audio('sound.mp3'); // Make sure the path to your sound file is correct.
 
-        noButton.addEventListener('mouseover', function() {
-            // Get random positions for the "No" button within the box2 container
+        const noButton = document.getElementById('noButton');
+        const yesButton = document.getElementById('yesButton');
+
+        noButton.addEventListener('mouseover', function () {
             const box2 = document.querySelector('.box2');
             const box2Rect = box2.getBoundingClientRect();
-
-            // Calculate the random position
             const newTop = Math.random() * (box2Rect.height - noButton.offsetHeight);
             const newLeft = Math.random() * (box2Rect.width - noButton.offsetWidth);
-
-            // Set the new position
             noButton.style.top = newTop + 'px';
             noButton.style.left = newLeft + 'px';
         });
+
+        yesButton.addEventListener('click', function () {
+            audio.currentTime = 0;
+            audio.play().catch(error => console.error('Audio play failed:', error)); // Debugging if play fails
+        });
+
+        noButton.addEventListener('click', function () {
+            audio.currentTime = 0;
+            audio.play().catch(error => console.error('Audio play failed:', error)); // Debugging if play fails
+        });
     </script>
 </body>
+
 </html>

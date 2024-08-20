@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My First Proposal</title>
     <style>
-           .box1 {
+        .box1 {
             display: flex;
             font-weight: 800;
             justify-content: center;
@@ -13,6 +14,7 @@
             height: 100vh;
             background-color: #f0f0f0;
         }
+
         .box2 {
             text-align: center;
             padding: 20px;
@@ -22,9 +24,11 @@
             border: 3px solid black;
             border-radius: 8px;
         }
+
         .box2 p {
             color: blue;
         }
+
         .box2 a {
             display: inline-block;
             margin: 10px;
@@ -35,26 +39,45 @@
             text-decoration: none;
             cursor: pointer;
         }
+
         .yes {
-            background-color: #4CAF50; /* Green */
+            background-color: #4CAF50;
             color: white;
         }
+
         .no {
-            background-color: #f44336; /* Red */
+            background-color: #f44336;
             color: white;
         }
     </style>
 </head>
+
 <body>
     <div class="box1">
         <div class="box2">
-            <h2>Do You Love❤️ Me ? 🤗</h2>
-            <!-- Hidden input field to store the response -->
-            <a href="yes.html" class="yes">Yes</a>
-            <a href="1no.html" class="no">No</a>
+            <h2>Do You Love❤️ Me? 🤗</h2>
+            <a href="yes.html" class="yes" id="yesButton">Yes</a>
+            <a href="1no.html" class="no" id="noButton">No</a>
         </div>
     </div>
 
-   
+    <script>
+        // Add sound effects to Yes and No buttons
+        const audio = new Audio('sound.mp3'); // Replace 'sound.mp3' with the correct path to your sound file
+
+        const yesButton = document.getElementById('yesButton');
+        const noButton = document.getElementById('noButton');
+
+        yesButton.addEventListener('click', function () {
+            audio.currentTime = 0;
+            audio.play().catch(error => console.error('Audio play failed:', error));
+        });
+
+        noButton.addEventListener('click', function () {
+            audio.currentTime = 0;
+            audio.play().catch(error => console.error('Audio play failed:', error));
+        });
+    </script>
 </body>
+
 </html>
